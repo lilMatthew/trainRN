@@ -1,0 +1,1 @@
+export const frameLogin = require('../images/frameLogin.png');
