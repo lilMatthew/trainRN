@@ -13,5 +13,6 @@ import phoneNumberInput from './src/assets/screen/phoneNumberInput';
 import phoneinput from './src/assets/helper/phoneinput';
 import signupSuccess from './src/assets/screen/signupSuccess';
 import splashScreen from './src/assets/screen/splashScreen';
+import birthdayScreen from './src/assets/screen/birthdayScreen';
 
 AppRegistry.registerComponent(appName, () => App);

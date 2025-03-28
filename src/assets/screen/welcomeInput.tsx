@@ -79,7 +79,7 @@ const welcomeInput = () => {
                                 end={{ x: 1, y: 0 }}
                                 style={[commonStyles.linearButton, styles.linearButton]}>
                                 <TouchableOpacity 
-                                onPress={() => {navigation.navigate("Ten-cua-header5")}}
+                                onPress={() => {navigation.navigate("Ten-cua-header9")}}
                                 style={commonStyles.button}>
                                     <Text style={styles.btntxt}>Đăng nhập</Text>
                                 </TouchableOpacity>

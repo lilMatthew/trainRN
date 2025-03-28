@@ -8,6 +8,8 @@ import { useForm, Controller } from 'react-hook-form'
 import LinearGradient from 'react-native-linear-gradient'
 import { CheckBox, Icon, Image } from 'react-native-elements'
 import ImageProduct from '../component/permission/imageProduct'
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker'
+
 
 const signupScreen = () => {
     const navigation: NavigationProp<RootStackParamsList> = useNavigation()
@@ -22,19 +24,32 @@ const signupScreen = () => {
             password: '',
             repassword: '',
         }
-    }
-    )
-    const [images, setImages] = useState<string[]>([]);
-    const uploadImage = (imageArray: any[], checkUploadSlider: boolean, indexItem?: number) => {
-        setImages((prevImages) => [...prevImages, ...imageArray.map((image) => image.uri)]);
-    };
-    const deleteImage = (index: number) => {
-        setImages((prevImages) => prevImages.filter((_, i) => i !== index));
-    };
-    const handleImagePicker = () => {
-        
+    })
+    const [images, setImages] = useState('');
+    const pickImage = () => {
+        const option = {
+            mediaType: 'photo',
+            maxWidth: 800,
+            maxHeight: 600,
+            quality: 0.8,
+             
+        }
+        launchImageLibrary({mediaType: 'photo'}, (response) => {
+            if (!response.didCancel && !response.errorCode) {
+              const { uri, fileSize, type, fileName, width, height } = response.assets?.[0] || {} //check xem assets[0] có null không, nếu null thì trả về rỗng
+              console.log('URI:', uri);
+              console.log('Kích thước tệp:', fileSize);
+              console.log('Loại tệp:', type);
+              console.log('Tên tệp:', fileName);
+              console.log('Kích thước ảnh:', width, height);
+            }
+
+            if(response.assets && response.assets.length > 0){
+                setImages(response.assets[0].uri || '')} // check nếu uri có thì trả về uri, không có thì trả về rỗng
+          });
     };
 
+        console.log(images)
     return (
         <ImageBackground
             source={bgimg}
@@ -42,12 +57,8 @@ const signupScreen = () => {
             <KeyboardAvoidingView>
                 <ScrollView contentContainerStyle={commonStyles.scrollViewContent}>
                     <View style={commonStyles.container}>
-                    <TouchableOpacity style={styles.imgacess} onPress={handleImagePicker}>
-                    <ImageProduct
-                            arrData={images}
-                            uploadImage={uploadImage}
-                            deleteImage={deleteImage}
-                        />
+                        <TouchableOpacity style={styles.imgacess} onPress={pickImage}>
+                         <Image source={{ uri: images }} style={styles.imgPreview} />
                         </TouchableOpacity>
                         <Controller
                             control={control}
@@ -155,7 +166,7 @@ const signupScreen = () => {
                             rules={{
                                 required: true,
                                 validate: (value) =>
-                                    value ===  getValues('password') || 'Mật khẩu không khớp.', // Custom validation rule
+                                    value === getValues('password') || 'Mật khẩu không khớp.', // Custom validation rule
                             }}
                             render={({ field: { onChange, onBlur, value } }) => (
                                 <View style={styles.inputWrapper}>
@@ -195,8 +206,8 @@ const signupScreen = () => {
                                 uncheckedIcon={<Icon name="check-box-outline-blank" size={16} color="black" />}
                             />
                             <Text style={styles.txtdesc}>
-                                Bằng cách tạo tài khoản, bạn đồng ý{'\n'} 
-                                với Điều khoản dịch vụ và Chính sách bảo{'\n'} 
+                                Bằng cách tạo tài khoản, bạn đồng ý{'\n'}
+                                với Điều khoản dịch vụ và Chính sách bảo{'\n'}
                                 mật của chúng tôi
                             </Text>
                         </View>
@@ -211,7 +222,7 @@ const signupScreen = () => {
                             <TouchableOpacity
                                 style={commonStyles.button}
                                 onPress={handleSubmit((data) => {
-                                    if(!isChecked){
+                                    if (!isChecked) {
                                         setCheckBox(true)
                                         return
                                     }
@@ -222,8 +233,8 @@ const signupScreen = () => {
                             </TouchableOpacity>
                         </LinearGradient>
                         <TouchableOpacity
-                        onPress={() => navigation.navigate("Ten-cua-header4")}
-                        style = {styles.txtbottom}>
+                            onPress={() => navigation.navigate("Ten-cua-header4")}
+                            style={styles.txtbottom}>
                             <Text>Bạn đã có tài khoản?<Text style={styles.txtInputHighligth}>Đăng nhập</Text></Text>
                         </TouchableOpacity>
                     </View>
@@ -251,9 +262,9 @@ const styles = StyleSheet.create({
     checkbox: {
         margin: 0,
         padding: 0,
-        
+
     },
-    imgacess:{
+    imgacess: {
         width: 99,
         height: 99,
         borderRadius: 50,
@@ -265,11 +276,10 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         overflow: 'hidden',
     },
-    imgPreview:{
-        width: '50%',
-        height: '50%',
-        borderRadius: 50, 
-        resizeMode: 'cover', 
+    imgPreview: {
+        width: 100,
+        height: 100,
+        resizeMode: 'cover',
         // backgroundColor: 'white',
     },
     inputContainer: {
@@ -319,10 +329,10 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         lineHeight: 20,
     },
-    txtbottom:{
+    txtbottom: {
         marginTop: 20,
     },
-    txtInputHighligth:{
+    txtInputHighligth: {
         fontFamily: 'Roboto',
         fontSize: 16,
         color: 'violet',

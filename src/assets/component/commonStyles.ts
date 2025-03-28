@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { dimension } from './dimension/dimension';
 
 export const commonStyles = StyleSheet.create({
     button: {
@@ -22,11 +23,28 @@ export const commonStyles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    errorText:{
+        fontFamily: 'Roboto',
+        color: 'red',
+        fontSize: 12,
+        marginTop: 5,
+    },
     linearButton: {
         borderRadius: 25,
-        width: 238,
+        width: dimension.ITEM_WIDTH,
         height: 50,
         marginTop: 10
+    },
+    inputWrapper:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        width: 270,
+        borderWidth: 1,
+        borderRadius: 10,
+        borderColor: 'gray',
+        marginTop: 10,
     },
     
     headerText:{

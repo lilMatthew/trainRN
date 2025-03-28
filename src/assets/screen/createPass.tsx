@@ -111,18 +111,19 @@ const createPassWord = () => {
                                         </Text>
                                 </View>
                             </View>
-                            <LinearGradient
+
+                            
+                        </View>
+                        <LinearGradient
                             start={{x: 0, y: 0}}
                             end={{x: 1, y: 0}}
-                            colors={['#FF9FC7', '#F32878']} style={commonStyles.button}>
+                            colors={['#FF9FC7', '#F32878']} style={commonStyles.linearButton}>
                                 <TouchableOpacity
                                 style={commonStyles.button}
-                                onPress = {()=>{}}>
+                                onPress = {()=>navigation.navigate('Screen-Birthday')}>
                                 <Text style={styles.btntxt}>Đăng kí</Text>
                                 </TouchableOpacity>
                             </LinearGradient>
-                            
-                        </View>
                     </View>
                 </ScrollView>
             </KeyboardAvoidingView>

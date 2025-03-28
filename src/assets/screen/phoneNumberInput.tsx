@@ -8,9 +8,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import PhoneInputComponent from '../helper/phoneinput'
 import { Controller, useForm } from 'react-hook-form'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
-import Modal from 'react-native-modal';
-import { getPrivacyPolicyText } from '../helper/getPrivacyPolicyText'
-import Header from '../component/headerText'
+import CustomModal from '../component/modal/Modal'
 
 
 const phoneNumberInput = () => {
@@ -23,11 +21,8 @@ const phoneNumberInput = () => {
     const onSubmit = (data: { phonenumber: string }) => {
         navigation.navigate('Ten-cua-header8')
     }
-    const [isModalVisible, setModalVisible] = useState(false);
-    const toggleModal = () => {
-        setModalVisible(!isModalVisible);
-    };
-    const text = getPrivacyPolicyText();
+
+
 
 
     return (
@@ -44,7 +39,6 @@ const phoneNumberInput = () => {
                         <View style={styles.inputContainer}>
                             <SafeAreaProvider>
                                 <SafeAreaView>
-
                                     <Text style={styles.txtInputContainer}>
                                         Chỉ cần nhập số điện thoại của bạn để đăng nhập hoặc tạo tài khoản.
                                     </Text>
@@ -52,7 +46,7 @@ const phoneNumberInput = () => {
                                         control={control}
                                         rules={{
                                             required: true,
-                                            pattern: /^[0-9]{9}$/, // Validation rule
+                                            pattern: /^[0-9]{9}$/, // Validation rule 
                                         }}
                                         render={({ field: { onChange, onBlur, value } }) => (
                                             <PhoneInputComponent
@@ -68,42 +62,11 @@ const phoneNumberInput = () => {
                                             {errors.phonenumber.type === 'required' ? 'Số điện thoại bắt buộc' : 'SDT cần 9 số(+84 là 0)'}
                                         </Text>
                                     )}
-                                    <TouchableOpacity
-                                        onPress={() => (setModalVisible(true))}>
-                                        <Text style={styles.txtInputContainer}>
-                                            Bằng cách sử dụng ứng dụng của chúng tôi,
-                                            bạn đồng ý với {''}
-                                            <Text style={styles.txtInputHighligth}>Chính sách bảo mật</Text> {''}và {''}
-                                            <Text style={styles.txtInputHighligth}>Điều khoản sử dụng</Text> của chúng tôi
-                                        </Text>
-                                    </TouchableOpacity>
-                                    <Modal
-                                        isVisible={isModalVisible}
-                                        animationIn= "rotate"
-                                        animationOut= "bounceOutDown"
-                                        onBackButtonPress={() => setModalVisible(false)}
-                                        animationInTiming= {1000}
-                                        style={{ margin: 10 }}>
-                                        <ScrollView>
-                                            <View style={styles.modalContainer}>
-                                                <Header headerText='Chính sách bảo mật' />
-                                                <Text>{text}</Text>
-                                                <LinearGradient
-                                                    colors={['#FFBF35', '#FFA900']}
-                                                    start={{ x: 0, y: 0 }}
-                                                    end={{ x: 1, y: 0 }}
-                                                    style={styles.linearButton2}>
-                                                    <TouchableOpacity
-                                                        onPress={() => toggleModal()}
-                                                        style={styles.buttonSkip}>
-                                                        <Text style={commonStyles.buttonText} >Đã hiểu</Text>
-                                                    </TouchableOpacity>
-                                                </LinearGradient>
-                                            </View>
-                                        </ScrollView>
-
-
-                                    </Modal>
+                                    <CustomModal
+                                        headerText="Chính sách bảo mật"
+                                        contentText="Đây là nội dung chính sách bảo mật của bạn. Vui lòng đọc kỹ trước khi tiếp tục."
+                                        buttonText="Đã hiểu"
+                                    />
                                 </SafeAreaView>
                             </SafeAreaProvider>
                         </View>
@@ -120,9 +83,7 @@ const phoneNumberInput = () => {
                         </LinearGradient>
                     </View>
                 </ScrollView>
-
             </KeyboardAvoidingView>
-
         </ImageBackground>
     )
 }
@@ -151,7 +112,6 @@ const styles = StyleSheet.create({
     inputContainer: {
         paddingTop: 10,
         backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        // backgroundColor: 'black',
         height: 240,
         width: '95%',
         borderRadius: 20,
@@ -160,29 +120,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginBottom: 10,
     },
-    modalContainer: {
-        flex: 1,
-        backgroundColor: 'white',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    modalView: {
-        backgroundColor: 'white',
-        borderRadius: 20,
-        padding: 20,
-        width: '90%', // Adjust width to fit the screen
-        maxHeight: '80%', // Limit height to avoid overflow
-        alignItems: 'center',
-    },
-    modalText: {
-        fontSize: 14,
-        color: 'black',
-        textAlign: 'left',
-        marginBottom: 20,
-    },
-    modalContent: {
-        paddingVertical: 10,
-    },
+
     txtInputContainer: {
         fontFamily: 'Roboto-Light',
         fontSize: 15,
@@ -190,21 +128,5 @@ const styles = StyleSheet.create({
         color: 'black',
         marginHorizontal: 25,
         marginTop: 10,
-    },
-    txtInputHighligth: {
-        color: 'violet'
-    },
-    linearButton2: {
-        borderRadius: 25,
-        width: 109,
-        height: 35,
-        marginTop: 10,
-        marginBottom: 10,
-    },
-    buttonSkip: {
-        width: '100%',
-        height: '100%',
-        justifyContent: 'center',
-        alignItems: 'center'
     },
 })

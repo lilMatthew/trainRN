@@ -12,6 +12,9 @@ import signupScreen from './src/assets/screen/signupScreen';
 import signupSuccess from './src/assets/screen/signupSuccess';
 import splashScreen from './src/assets/screen/splashScreen';
 import createPassWord from './src/assets/screen/createPass';
+import matchingScreen from './src/assets/screen/matchingScreen';
+import birthdayScreen from './src/assets/screen/birthdayScreen';
+import informationScreen from './src/assets/screen/informationScreen';
 
 const App = () => {
 
@@ -20,6 +23,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen name="Information-Screen" component={informationScreen}  options={{header: ()=> <Header headerText='Thông tin thêm'/>,headerTransparent: true,}}/>   
       <Stack.Screen name="Ten-cua-header0" component={splashScreen}  options={{headerShown:false}}/>
       <Stack.Screen name="Ten-cua-header1" component={login} options={{headerShown:false}}/>
       <Stack.Screen name="Ten-cua-header2" component={loginTwo} options={{headerShown:false}}/>
@@ -29,6 +33,9 @@ const App = () => {
       <Stack.Screen name="Ten-cua-header6" component={signupScreen}  options={{header: ()=> <Header headerText='Đăng kí'/>,headerTransparent: true,}}/>
       <Stack.Screen name="Ten-cua-header7" component={signupSuccess}  options={{headerShown:false}}/>
       <Stack.Screen name="Ten-cua-header8" component={createPassWord}  options={{header: ()=> <Header headerText='Tạo mật khẩu'/>,headerTransparent: true,}}/>
+      <Stack.Screen name="Screen-Birthday" component={birthdayScreen}  options={{header: ()=> <Header headerText='Birthday'/>,headerTransparent: true,}}/>     
+     
+     
     </Stack.Navigator>
     </NavigationContainer>
   )

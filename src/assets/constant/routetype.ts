@@ -9,4 +9,7 @@ type RootStackParamsList = {
     "Ten-cua-header6": undefined;
     "Ten-cua-header7": undefined;
     "Ten-cua-header8": undefined;
+    "Ten-cua-header9": undefined;   
+    "Screen-Birthday": undefined;
+    "Information-Screen": undefined;
 }

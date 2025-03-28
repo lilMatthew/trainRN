@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native';
 export const customText = StyleSheet.create({
     boldText:{
         fontFamily: 'Roboto-Bold',
-        fontSize: 20,
+        fontSize: 16,
         textAlign: 'center',
         color: 'black',
     },
@@ -32,11 +32,17 @@ export const customText = StyleSheet.create({
     },
     subText: {
         fontFamily: 'Roboto-Light',
-        fontSize: 18,
-        color: 'rgba(0, 0, 0, 0.3)',
-        textAlign: 'center',
+        fontSize: 14,
+        color: 'rgba(0, 0, 0, 0.8)',
+        textAlign: 'left',
         width: 160,
-        height: 43,
-        alignSelf: 'center',
+        paddingVertical: 5
     },
+    normalText:{
+        fontFamily: 'Roboto',
+        fontSize: 16,
+        textAlign: 'left',
+        width: 160,
+        paddingVertical: 5
+    }
 })

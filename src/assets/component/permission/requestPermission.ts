@@ -47,6 +47,7 @@ import { Alert, PermissionsAndroid, Platform } from "react-native";
         try{
             if(Platform.OS === 'ios'){
                 const result = await request(PERMISSIONS.IOS.CAMERA);
+                console.log(result);
                 return result;
             } else {
                 const result = await request(PERMISSIONS.ANDROID.CAMERA);
