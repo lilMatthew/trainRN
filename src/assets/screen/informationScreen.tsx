@@ -1,6 +1,6 @@
 import { ImageBackground, ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import { useForm, Controller } from 'react-hook-form'
+import { useForm, Controller, useFormState } from 'react-hook-form'
 import { useNavigation, NavigationProp } from '@react-navigation/native'
 import { bgimg } from '../component/ImagePath'
 import { commonStyles } from '../component/commonStyles'
@@ -17,7 +17,7 @@ import { Button } from 'react-native-elements'
 
 const informationScreen = () => {
     const navigation: NavigationProp<RootStackParamsList> = useNavigation()
-    const { control, handleSubmit, formState: { errors } } = useForm({
+    const { control, handleSubmit } = useForm({
         defaultValues: {
             nickname: '',
             startdate: '',
@@ -27,6 +27,7 @@ const informationScreen = () => {
             annithree: '',
         }
     })
+    const {isDirty,isValid, errors} = useFormState({control})
 
     const { isVisiable,
         selectedDate,
@@ -90,11 +91,11 @@ const informationScreen = () => {
                             )}
                             name="startdate"
                         />
-                        {/* {errors.startdate &&
+                        {errors.startdate &&
                             <Text style={commonStyles.errorText}>
                                 {errors.startdate.message}
                             </Text>
-                        } */}
+                        }
                         <Controller
                             control={control}
                             rules={{
@@ -185,6 +186,7 @@ const informationScreen = () => {
                             <TouchableOpacity
                                 style={commonStyles.button}
                                 onPress={() => { }}
+                                disabled= {!isDirty || !isValid}
                             >
                                 <Text style={commonStyles.buttonText}>Đăng kí</Text>
                             </TouchableOpacity>
