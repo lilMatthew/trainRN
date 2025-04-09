@@ -218,7 +218,7 @@ const signupScreen = () => {
                             colors={['#FF9FC7', '#F32878']}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 0 }}
-                            style={[commonStyles.linearButton, styles.linearButton]}>
+                            style={commonStyles.linearButton}>
                             <TouchableOpacity
                                 style={commonStyles.button}
                                 onPress={handleSubmit((data) => {
@@ -313,9 +313,6 @@ const styles = StyleSheet.create({
         color: 'red',
         fontSize: 12,
         marginTop: 5,
-    },
-    linearButton: {
-
     },
     txtinput: {
         fontFamily: 'Roboto',

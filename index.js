@@ -14,5 +14,7 @@ import phoneinput from './src/assets/helper/phoneinput';
 import signupSuccess from './src/assets/screen/signupSuccess';
 import splashScreen from './src/assets/screen/splashScreen';
 import birthdayScreen from './src/assets/screen/birthdayScreen';
+import signupTestHook from './src/assets/screen/signinTestHook';
+import signinTestHook from './src/assets/screen/signinTestHook';
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => signinTestHook);
