@@ -12,4 +12,5 @@ type RootStackParamsList = {
     "Ten-cua-header9": undefined;   
     "Screen-Birthday": undefined;
     "Information-Screen": undefined;
+    "Mobx-test": undefined;
 }
