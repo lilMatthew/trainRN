@@ -13,4 +13,5 @@ type RootStackParamsList = {
     "Screen-Birthday": undefined;
     "Information-Screen": undefined;
     "Mobx-test": undefined;
+    "Mobx-state-tree-test": undefined;
 }

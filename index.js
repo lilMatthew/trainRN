@@ -17,5 +17,6 @@ import birthdayScreen from './src/assets/screen/birthdayScreen';
 import signupTestHook from './src/assets/screen/signinTestHook';
 import signinTestHook from './src/assets/screen/signinTestHook';
 import MobxScreenTest from './src/assets/screen/mobxScreen';
+import DrinkList from './src/assets/screen/DrinkList';
 
-AppRegistry.registerComponent(appName, () => MobxScreenTest);
+AppRegistry.registerComponent(appName, () => DrinkList);

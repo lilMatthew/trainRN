@@ -6,17 +6,17 @@ interface CartItem{
     price: number;
     quantity: number;
 }
-
+//Store được sử dụng để quản lý trạng thái của ứng dụng, lưu trữ dữ liệu và thực hiện các phép toán trên dữ liệu đó.
 class MobxStore{
     item : CartItem[] = []
 
     constructor(){this,
         makeObservable(this,{
-            item:observable,
-            addItem:action,
+            item:observable, //quan sát giá trị của item
+            addItem:action, //thay đổi trạng thái
             removeItem:action,
             clearCart:action,
-            totalPrice: computed,
+            totalPrice: computed, //tính toán giá trị dựa trên kết quả hiện tịa mà k cần re-render
             totalItems: computed,
         })
         autorun(() => {
