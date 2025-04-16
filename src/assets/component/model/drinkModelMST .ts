@@ -8,3 +8,4 @@ export const DrinkCoffeeModel = t.model('DrinkModel', {
     available: t.boolean,
     description: t.string,
 })
+

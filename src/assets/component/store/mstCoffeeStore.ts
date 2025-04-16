@@ -13,7 +13,7 @@ export const DrinkCoffeeStore = t.model('DrinkCoffeeStore', {
             try {
                 const response = yield fetch(ApiEndpoints.baseURL);
                 const data = yield response.json();
-                console.log("API Data:", data); // Kiểm tra dữ liệu trả về từ API
+                console.log("API Data:", data);
                 self.drinks = data.map((drink: any) => DrinkCoffeeModel.create(drink)); // Cập nhật drinks
             } catch (error: any) {
                 self.error = error.message;

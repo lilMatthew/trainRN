@@ -57,12 +57,6 @@ const DrinkList = observer(() => {
                 keyExtractor={(item => item.id)}
                 renderItem={renderItem}
             />
-            {/* <View style={styles.buttonContainer}>
-                <Button
-                    title="Them do uong"
-                    onPress={() => store.removeDrink(store.drinks[0].id)}
-                />
-            </View> */}
         </View>
 
     )
