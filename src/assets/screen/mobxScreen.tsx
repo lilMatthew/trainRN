@@ -16,7 +16,6 @@ const MobxScreenTest = observer(() => {
                 <Button title='Thêm sản phẩm' onPress={() => {
                     mobxStore.addItem({ id: '1', name: 'Coca', price: 100, quantity: 1 })
                     mobxStore.addItem({ id: '2', name: 'Pepsi', price: 200, quantity: 1 })
-                    // mobxStore.addItem({ id: '3', name: 'Monster', price: 300, quantity: 1 })
                 }} />
                 <Button title='Xóa giỏ hàng' onPress={() => {
                     mobxStore.clearCart()

@@ -1,4 +1,4 @@
-import { t, flow} from 'mobx-state-tree'
+import { t, flow } from 'mobx-state-tree'
 import ApiEndpoints from '../../network/api_endpoint'
 import { DrinkCoffeeModel } from '../model/drinkModelMST '
 
@@ -21,14 +21,5 @@ export const DrinkCoffeeStore = t.model('DrinkCoffeeStore', {
                 self.isLoading = false;
             }
         }),
-
-
-        // addDrink(drink: any) {
-        //     self.drinks.push(DrinkCoffeeModel.create(drink))
-        // },
-        // removeDrink(drinkId:string){
-        //     self.drinks.replace(self.drinks.filter(drink => drink.id !== drinkId))
-        // }
     }))
-
 

@@ -6,6 +6,7 @@ import { commonStyles } from '../component/commonStyles'
 import { DrinkCoffeeStore } from '../component/store/mstCoffeeStore'
 import { getSnapshot } from 'mobx-state-tree'
 import { dimension } from '../component/dimension/dimension'
+import { Button } from 'react-native-elements'
 
 
 const store = DrinkCoffeeStore.create({
@@ -46,28 +47,40 @@ const DrinkList = observer(() => {
         <View style={styles.itemContainer}>
             <Text style={styles.itemName}>{item.name}</Text>
             <Text style={styles.itemPrice}>{item.price}</Text>
-            <Text style={commonStyles.subText}>{item.description}</Text>
+            <Text style={styles.subText}>{item.description}</Text>
         </View>
     );
     return (
         <View style={commonStyles.container}>
-                <FlatList
-                    data={store.drinks}
-                    keyExtractor={(item => item.id)}
-                    renderItem={renderItem}
+            <FlatList
+                data={store.drinks}
+                keyExtractor={(item => item.id)}
+                renderItem={renderItem}
+            />
+            {/* <View style={styles.buttonContainer}>
+                <Button
+                    title="Them do uong"
+                    onPress={() => store.removeDrink(store.drinks[0].id)}
                 />
+            </View> */}
         </View>
+
     )
 })
+
 
 export default DrinkList
 
 const styles = StyleSheet.create({
+    buttonContainer: {
+        marginTop: 10,
+        alignItems: 'center',
+    },
     itemContainer: {
         padding: 15,
         marginBottom: 10,
         backgroundColor: "#fff",
-        borderRadius: 8,
+        borderRadius: 10,
         width: dimension.ITEM_WIDTH
     },
     itemName: {
@@ -78,5 +91,12 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: 'Roboto',
         color: 'gray',
-    }
+    },
+    subText: {
+        fontFamily: 'Roboto-Light',
+        fontSize: 16,
+        color: 'rgba(0, 0, 0, 0.3)',
+        width: 160,
+        height: 43,
+    },
 })
