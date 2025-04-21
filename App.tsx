@@ -15,7 +15,6 @@ import createPassWord from './src/assets/screen/createPass';
 import matchingScreen from './src/assets/screen/matchingScreen';
 import birthdayScreen from './src/assets/screen/birthdayScreen';
 import informationScreen from './src/assets/screen/informationScreen';
-import { StoreProvider } from './src/assets/component/store/provider';
 import DrinkList from './src/assets/screen/DrinkList';
 
 const App = () => {

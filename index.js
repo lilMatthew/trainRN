@@ -18,5 +18,6 @@ import signupTestHook from './src/assets/screen/signinTestHook';
 import signinTestHook from './src/assets/screen/signinTestHook';
 import MobxScreenTest from './src/assets/screen/mobxScreen';
 import DrinkList from './src/assets/screen/DrinkList';
+import List from './src/assets/test/list';
 
-AppRegistry.registerComponent(appName, () => DrinkList);
+AppRegistry.registerComponent(appName, () => List);
