@@ -11,7 +11,7 @@ export const DrinkCoffeeStore = t.model('DrinkCoffeeStore', {
         fetchDrinks: flow(function* () {
             self.isLoading = true;
             try {
-                const response = yield fetch(ApiEndpoints.baseURL);
+                const response = yield fetch(ApiEndpoints.baseURL); 
                 const data = yield response.json();
                 console.log("API Data:", data);
                 self.drinks = data.map((drink: any) => DrinkCoffeeModel.create(drink)); // Cập nhật drinks
